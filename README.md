@@ -20,6 +20,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## AI analysis setup
+
+To enable real model-based analysis in `POST /api/analyze`:
+
+1. Copy `.env.example` to `.env.local`
+2. Set your OpenAI key in `OPENAI_API_KEY`
+3. (Optional) choose model in `OPENAI_ANALYZE_MODEL` (default: `gpt-4o-mini`)
+
+If `OPENAI_API_KEY` is missing or the API call fails, the endpoint returns an AI-unavailable response and does not use local keyword fallback.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
