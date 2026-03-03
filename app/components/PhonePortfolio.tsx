@@ -85,8 +85,8 @@ const projects: Project[] = [
     accentColor: '#f59e0b',
     rotation: -7,
     screenshots: [
-      '/burgers flow/Restaraunt - added to cart.png',
-      '/burgers flow/Restaurant - view item.png',
+      '/burgers flow/Restaraunt.png',
+      '/burgers flow/Choose restaurant.png',
       '/burgers flow/Tracking order_created.png',
     ],
   },
@@ -95,7 +95,9 @@ const projects: Project[] = [
 export default function PhonePortfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeScreenshot, setActiveScreenshot] = useState(0);
-  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(
+    null
+  );
 
   const openProject = (project: Project) => {
     setSelectedProject(project);
@@ -113,7 +115,7 @@ export default function PhonePortfolio() {
         setSlideDirection(null);
       }, 200);
     },
-    [activeScreenshot, selectedProject],
+    [activeScreenshot, selectedProject]
   );
 
   const goPrev = useCallback(() => {
@@ -245,7 +247,9 @@ export default function PhonePortfolio() {
                         aria-label={`Ekran ${i + 1}`}
                         style={
                           i === activeScreenshot
-                            ? ({ '--dot-color': selectedProject.accentColor } as React.CSSProperties)
+                            ? ({
+                                '--dot-color': selectedProject.accentColor,
+                              } as React.CSSProperties)
                             : undefined
                         }
                       />
