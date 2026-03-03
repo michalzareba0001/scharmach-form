@@ -338,7 +338,10 @@ async function analyzeWithModel(
         } else if (response.status === 429) {
           message =
             'Limit zapytań OpenAI został przekroczony. Odczekaj chwilę i spróbuj ponownie.';
-        } else if (typeof apiMessage === 'string' && apiMessage.trim().length > 0) {
+        } else if (
+          typeof apiMessage === 'string' &&
+          apiMessage.trim().length > 0
+        ) {
           message = apiMessage;
         }
 

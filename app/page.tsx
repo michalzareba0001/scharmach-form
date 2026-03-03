@@ -40,28 +40,6 @@ export default function Home() {
 
           {/* Form */}
           <PricingForm />
-
-          {/* Trust badges */}
-          <div className="mt-16 text-center space-y-6">
-            <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-[var(--text-muted)]">
-              <div className="flex items-center gap-2">
-                <span className="text-[var(--success)]">✓</span>
-                <span>26 000+ klientów</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[var(--success)]">✓</span>
-                <span>4.6/5 gwiazdek</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[var(--success)]">✓</span>
-                <span>20+ lat doświadczenia</span>
-              </div>
-            </div>
-            <p className="text-xs text-[var(--text-muted)]">
-              Współpracują z nami: Google, Lotos, Nokia, Santander, WWF i wiele
-              innych
-            </p>
-          </div>
         </div>
       </main>
 
