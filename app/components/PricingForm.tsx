@@ -552,7 +552,7 @@ export default function PricingForm() {
           </p>
         </div>
 
-        <div className="card glow max-w-md mx-auto py-8">
+        <div className="card glow max-w-lg mx-auto py-8">
           <div className="text-5xl md:text-6xl font-bold gradient-text">
             {formatPrice(estimate.min)} - {formatPrice(estimate.max)}
           </div>
@@ -638,7 +638,7 @@ export default function PricingForm() {
               href="tel:+48535959510"
               className="text-[var(--primary)] hover:underline"
             >
-              +48 535 95 95 10
+              +48 123 456 789
             </a>
           </div>
         </div>
