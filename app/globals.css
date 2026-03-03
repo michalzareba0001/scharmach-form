@@ -253,3 +253,454 @@ textarea::placeholder {
       transparent 50%
     );
 }
+
+/* ===== Phone Portfolio Section ===== */
+.phone-portfolio-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.portfolio-label {
+  display: none;
+}
+
+.portfolio-label-icon {
+  font-size: 1.2rem;
+}
+
+/* Container for fixed bottom phones */
+.phones-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.75rem;
+  padding: 0 1rem;
+  pointer-events: auto;
+}
+
+/* Individual phone button (ragdoll) - peeking from bottom */
+.phone-ragdoll {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  transform: rotate(var(--rotation, 0deg)) translateY(55%);
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.3s ease;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+  filter: brightness(0.7);
+}
+
+/* Staggered wave: even phones peek more, odd phones peek less */
+.phone-ragdoll.phone-up {
+  transform: rotate(var(--rotation, 0deg)) translateY(62%);
+}
+
+.phone-ragdoll.phone-down {
+  transform: rotate(var(--rotation, 0deg)) translateY(72%);
+}
+
+.phone-ragdoll:hover {
+  transform: rotate(0deg) translateY(10%) scale(1.05);
+  z-index: 10;
+  filter: brightness(1);
+}
+
+.phone-ragdoll.phone-up:hover,
+.phone-ragdoll.phone-down:hover {
+  transform: rotate(0deg) translateY(10%) scale(1.05);
+}
+
+.phone-ragdoll:hover .phone-frame {
+  box-shadow:
+    0 -10px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(201, 162, 39, 0.15);
+}
+
+.phone-ragdoll:hover .phone-label-tag {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Phone frame */
+.phone-frame {
+  width: 110px;
+  height: 230px;
+  background: #1c1c1e;
+  border-radius: 20px;
+  border: 2px solid #333;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.phone-frame.large {
+  width: 220px;
+  height: 440px;
+  border-radius: 32px;
+  border-width: 3px;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 6px;
+  background: #000;
+  border-radius: 10px;
+  z-index: 5;
+}
+
+.phone-frame.large .phone-notch {
+  width: 70px;
+  height: 10px;
+  top: 10px;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  font-size: 5px;
+}
+
+.phone-frame.large .phone-screen {
+  font-size: 9px;
+}
+
+.phone-home-bar {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 3px;
+  background: #555;
+  border-radius: 3px;
+  z-index: 5;
+}
+
+.phone-frame.large .phone-home-bar {
+  width: 60px;
+  height: 4px;
+  bottom: 6px;
+}
+
+/* Phone name label */
+.phone-label-tag {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Modal ===== */
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.project-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-modal-close {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.project-modal-close:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  background: var(--bg-card-hover);
+}
+
+.project-modal-content {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.project-modal-phone {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Carousel wrapper */
+.phone-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Arrow buttons */
+.carousel-arrow {
+  all: unset;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+  color: var(--text-primary);
+  border-color: var(--primary);
+  background: rgba(201, 162, 39, 0.1);
+  transform: scale(1.1);
+}
+
+.carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+/* Slide animations */
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+.phone-screen.slide-out-left {
+  animation: slideOutLeft 0.2s ease forwards;
+}
+
+.phone-screen.slide-out-right {
+  animation: slideOutRight 0.2s ease forwards;
+}
+
+/* Dot indicators */
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-dot {
+  all: unset;
+  cursor: pointer;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.carousel-dot:hover {
+  background: var(--text-muted);
+  transform: scale(1.3);
+}
+
+.carousel-dot.active {
+  background: var(--dot-color, var(--primary));
+  width: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(201, 162, 39, 0.4);
+}
+
+/* Counter */
+.carousel-counter {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.project-modal-info {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.5rem;
+}
+
+.project-category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0.25rem 0 0.75rem;
+}
+
+.project-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tech-tag {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .project-modal-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .project-tech {
+    justify-content: center;
+  }
+
+  .phones-container {
+    gap: 0.35rem;
+  }
+
+  .phone-frame {
+    width: 65px;
+    height: 140px;
+    border-radius: 12px;
+    border-width: 1.5px;
+  }
+
+  .phone-ragdoll.phone-up {
+    transform: rotate(calc(var(--rotation, 0deg) * 0.5)) translateY(52%);
+  }
+
+  .phone-ragdoll.phone-down {
+    transform: rotate(calc(var(--rotation, 0deg) * 0.5)) translateY(68%);
+  }
+
+  .phone-ragdoll:hover,
+  .phone-ragdoll.phone-up:hover,
+  .phone-ragdoll.phone-down:hover {
+    transform: rotate(0deg) translateY(15%) scale(1.05);
+  }
+
+  .phone-notch {
+    width: 24px;
+    height: 4px;
+    top: 4px;
+  }
+
+  .phone-home-bar {
+    width: 22px;
+    height: 2px;
+    bottom: 3px;
+  }
+
+  .phone-label-tag {
+    font-size: 0.55rem;
+    top: -26px;
+    padding: 2px 6px;
+  }
+
+  .phone-frame.large {
+    width: 180px;
+    height: 360px;
+  }
+
+  .carousel-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+  }
+}

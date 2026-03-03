@@ -1,10 +1,11 @@
+import PhonePortfolio from './components/PhonePortfolio';
 import PricingForm from './components/PricingForm';
 
 export default function Home() {
   return (
     <div className="min-h-screen pattern-bg">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-dark)]/80 backdrop-blur-lg border-b border-[var(--border-color)]">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-dark)]/80 backdrop-blur-lg border-b border-[var(--border-color)] ">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <a
             href="https://scharmach.pl"
@@ -20,7 +21,7 @@ export default function Home() {
       </header>
 
       {/* Main content */}
-      <main className="pt-24 pb-16 px-4">
+      <main className="pt-24 pb-16 px-4 pb-40">
         <div className="max-w-3xl mx-auto">
           {/* Hero */}
           <div className="text-center mb-12 space-y-4">
@@ -42,6 +43,9 @@ export default function Home() {
           <PricingForm />
         </div>
       </main>
+
+      {/* Portfolio - scattered phones */}
+      <PhonePortfolio />
 
       {/* Footer */}
     </div>
