@@ -279,7 +279,7 @@ textarea::placeholder {
   align-items: flex-end;
   gap: 0.75rem;
   padding: 0 1rem;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 /* Individual phone button (ragdoll) - peeking from bottom */
@@ -287,6 +287,7 @@ textarea::placeholder {
   all: unset;
   cursor: pointer;
   position: relative;
+  pointer-events: auto;
   transform: rotate(var(--rotation, 0deg)) translateY(55%);
   transition:
     transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
