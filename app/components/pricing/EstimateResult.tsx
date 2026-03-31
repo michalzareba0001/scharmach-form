@@ -112,7 +112,7 @@ export function EstimateResult({
             href="tel:+48535959510"
             className="text-[var(--primary)] hover:underline"
           >
-            +48 123 456 789
+            +48 535 959 510
           </a>
         </div>
       </div>
